@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 import javax.sql.DataSource;
@@ -31,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 
+
     @Override
     protected void configure(HttpSecurity security) throws Exception {
 
@@ -43,6 +45,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // this line is for h2-console, it reduces security
         security.csrf().disable();
+
+
 
         security.authorizeRequests()
                 .antMatchers("/users/**").hasRole("ADMIN")

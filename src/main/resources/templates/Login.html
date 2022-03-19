@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +20,44 @@
     </div>
 </header>
 
-<main>
+<main role="main" class="container">
+
+    <div class="row align-items-center">
+
+        <div class="col"></div>
+
+        <div class="col-8">
+
+            <form th:action="@{/login}" action="index.html" method="post">
+
+                <div>
+                    <img src="../static/images/download.jpg" width="300" height="300" th:src="@{/images/download.jpg}"  alt="test"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="login" class="form-label">Login</label>
+                    <input id="login" type="text" name="username" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input id="password" type="password" name="password" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="remember-me"> Remember Me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+
+
+            </form>
+
+        </div>
+
+        <div class="col"></div>
+
+    </div>
+
 
 </main>
 

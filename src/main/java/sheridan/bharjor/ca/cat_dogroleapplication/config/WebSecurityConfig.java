@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         security.authorizeRequests()
                 // remove "h2-console" from the program in production
-                .antMatchers("/css/**", "/js/**", "/index", "/", "/h2-console/**")
+                .antMatchers("/css/**", "/js/**", "/index", "/", "/images/**")
                 .permitAll();
 
         // this line is for h2-console, it reduces security
@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         security.formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/index")
+                .defaultSuccessUrl("/Home")
                 .failureUrl("/login?error")
                 .permitAll();
 
@@ -65,6 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies("my-remember-me-cookie")
                 .permitAll();
 
+        //used to store remember me information when logging in
         security.rememberMe()
                 .rememberMeCookieName("my-remember-me-cookie")
                 .tokenRepository(persistentTokenRepository())
